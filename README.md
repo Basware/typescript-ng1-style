@@ -68,7 +68,8 @@ angular.module('fbSomeFeature').service('MyService', MyService);
 ```
 
 Notable items:
- - Use service() instead of factory.
+ - Use service() instead of factory
+ - class exported to allow importing the type (as in MyController). 
 
 ## Directives
 
@@ -125,4 +126,3 @@ Notable items:
 - Angular modules have limited utility compared to standard ES6 
   modules (most useful for reusable third party libraries).
   Don't overdesign them in your app.
-  
