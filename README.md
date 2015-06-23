@@ -18,8 +18,8 @@ Tooling workflow we are using:
  - TypeScript 1.5+
  - Browserify, tsify and watchify (because tsc doesn't support bundling yet)
  - Visual Studio Code
- - All third party libs (including angular) dumb-concatenated to lib.js (not exposed to browsery),
-   application build with browserify to main.js. "angular" is globally visible.
+ - All third party libs (including angular) dumb-concatenated to lib.js (not exposed to browserify),
+   application built with browserify to main.js. "angular" is globally visible.
  - Strict DI used
  - Gulp (but it doesn't matter, as heavy lifting done by browserify)
 
