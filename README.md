@@ -97,7 +97,7 @@ Notable items:
  - controllerAs and bindToController
  - Relevant file names: FancyButton.ts, FancyButton.html (separate FancyButtonController.ts if you want)
 
-## modules
+## Angular Modules
 
 ```typescript
 
@@ -120,5 +120,9 @@ import './SomeFeature/SomeFeatureModule';
 
 ```
 
+Notable items:
 
-
+- Angular modules have limited utility compared to standard ES6 
+  modules (most useful for reusable third party libraries).
+  Don't overdesign them in your app.
+  
