@@ -36,13 +36,13 @@ export class MyController {
 	static $inject = ['$http', 'MyService'];
 	contructor(private $http: ng.IHttpService, private MyService: MyService) {
 	}
+
 	someMethod() {
 		this.MyService.someMethodOnService();
 	}
 }
 
 angular.module('fbSomeFeature').controller('MyController', MyController);
-
 
 ```	
 
@@ -81,7 +81,7 @@ export function FancyButtonDirective() : ng.IDirective {
 		controllerAs: 'fancyButton',
 		controller: FancyButtonController,
 		scope: {
-			someData: '=',
+			someData: '=,
 		},
 		bindToController: true
 	}
