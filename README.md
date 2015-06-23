@@ -81,7 +81,7 @@ export function FancyButtonDirective() : ng.IDirective {
 		controllerAs: 'fancyButton',
 		controller: FancyButtonController,
 		scope: {
-			someData: '=,
+			someData: '=',
 		},
 		bindToController: true
 	}
