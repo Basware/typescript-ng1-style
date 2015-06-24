@@ -22,6 +22,7 @@ Tooling workflow we are using:
    application built with browserify to main.js. "angular" is globally visible.
  - Strict DI used
  - Gulp (but it doesn't matter, as heavy lifting done by browserify)
+ - TSD package manager is used to install and bundle TypeScript definition files for improved intellisense.
 
 ## Controllers
 
