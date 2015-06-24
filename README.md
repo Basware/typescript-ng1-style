@@ -97,7 +97,7 @@ angular.module("fbSomeFeature").directive("fbFancyButton", () => new FancyButton
 Notable items:
 
  - controllerAs and bindToController
- - If you want to use DI, see further discussion. More steps are needed (TODO).
+ - If need to use DI in link() function, see [further topics](https://github.com/vivainio/typescript-ng1-style/blob/master/further_topics.md). 
  - Relevant file names: FancyButton.ts, FancyButton.html (separate FancyButtonController.ts if you want)
 
 ## Angular Modules
