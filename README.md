@@ -76,27 +76,27 @@ Notable items:
 
 ```typescript
 
-export function FancyButtonDirective() : ng.IDirective {
-	return {
-		templateUrl: 'Features/SomeFeature/FancyButton.html',
-		controllerAs: 'fancyButton',
-		controller: FancyButtonController,
-		scope: {
-			someData: '=',
-		},
-		bindToController: true
-	}
+export class FancyButtonDirective implements ng.IDirective {
+    
+    restrict = "EA";
+    templateUrl = "Features/SomeFeature/FancyButton.html";
+    controller = FancyButtonController;
+    controllerAs =  "fancyButton";
+    scope = { text:  "@" };
+    bindToController = true;   
+    link: angular.IDirectiveLinkFn = (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, controller: any) => {
+        element.find("#main-title").text(controller.text);
+    }
 }
 
-angular.module('fbSomeFeature').directive("fbFancyButton", 
-	FancyButtonDirective);
+angular.module("fbSomeFeature").directive("fbFancyButton", () => new FancyButtonDirective());
 
 ```
 
 Notable items:
 
- - function, not a class
  - controllerAs and bindToController
+ - If you want to use DI, see further discussion. More steps are needed (TODO).
  - Relevant file names: FancyButton.ts, FancyButton.html (separate FancyButtonController.ts if you want)
 
 ## Angular Modules
