@@ -99,6 +99,7 @@ Notable items:
  - controllerAs and bindToController
  - If need to use DI in link() function, see [further topics](https://github.com/vivainio/typescript-ng1-style/blob/master/further_topics.md). 
  - Relevant file names: FancyButton.ts, FancyButton.html (separate FancyButtonController.ts if you want)
+ - link is a lambda function, not a method. With ES6 method syntax, 'this' ends up pointing to global window object.
 
 ## Angular Modules
 
