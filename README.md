@@ -7,7 +7,7 @@ it where relevant.
 
 Goals:
  - Quick reference on how to implement Angular 1.x elements in TypeScript
- - As little text as possible
+ - As little text as possible. If you feel like reading more, see [further topics](https://github.com/vivainio/typescript-ng1-style/blob/master/further_topics.md) as well.
 
 Non-goals:
  - Teaching TypeScript or AngularJS
