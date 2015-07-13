@@ -42,7 +42,7 @@ style annotations everywhere.
 ## Angular tips
 
 - Since you are using controllerAs throughout, a handy way to get a reference to 
-  parent controller (somewhere up the DOM tree) with
+  parent controller (somewhere up the DOM tree) is
   ```typescript
   this.containerController : FancyButtonContainerController = this.$scope.$parent.buttonContainer
   ```
