@@ -10,7 +10,7 @@ Some developers prefer exposing the angular components in SomeFeatureModule.ts.
 This has some advantages, especially when the module name needs to be changed - 
 you would only change the module name in one place.
 
-On contrast, this style guide recommends the approach where the component is exposed
+In contrast, this style guide recommends the approach where the component is exposed
 to angular right after it has been declared (we have tried both and agreed on this approach). 
 Which one is better is a matter of taste.
 
