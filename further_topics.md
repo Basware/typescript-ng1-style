@@ -24,13 +24,22 @@ associated with the directive (e.g. to use in link() function), you need to add 
 with the features used in argument list and adjust the instantiation like so:
 
 ```typescript
-angular.module("fbSomeFeature").directive("fbFancyButton", ['$http', 
-	($http) => new FancyButtonDirective($http)]);
+export class FancyButtonDirective implements ng.IDirective {
+    restrict = "EA";
+    templateUrl = "Features/SomeFeature/FancyButton.html";
+    controller = FancyButtonController;
+    controllerAs =  "fancyButton";
+    scope = { text:  "@" };
+    constructor(private $animate) { }
+    link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, controller: FancyButtonController) =>
+    {
+        this.$animate.addClass("fancybutton", "fbtn");
+    }
+}
+angular.module("fbSomeFeature").directive("fbFancyButton", ["$animate", ($animate) =>  new FancyButtonDirective($animate)]);
 ```
 
 This is a bit messy, and should be rarely needed; therefore, it's not shown in main page.
-
-(TODO: add full example)
 
 ## Automatic DI
 
