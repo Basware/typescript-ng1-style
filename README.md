@@ -85,7 +85,7 @@ export class FancyButtonDirective implements ng.IDirective {
     scope = { text:  "@" };
     bindToController = true;   
     link = (scope: ng.IScope, element: ng.IAugmentedJQuery, 
-            attrs: ng.IAttributes, controller: any) => {
+            attrs: ng.IAttributes, controller: FancyButtonController) => {
         element.find("#main-title").text(controller.text);
     }
 }
