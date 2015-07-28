@@ -77,20 +77,19 @@ Notable items:
 ```typescript
 
 export class FancyButtonDirective implements ng.IDirective {
-    
-    restrict = "EA";
-    templateUrl = "Features/SomeFeature/FancyButton.html";
+    restrict = 'EA';
+    templateUrl = 'Features/SomeFeature/FancyButton.html';
     controller = FancyButtonController;
-    controllerAs =  "fancyButton";
-    scope = { text:  "@" };
+    controllerAs =  'fancyButton';
+    scope = { text:  '@' };
     bindToController = true;   
     link = (scope: ng.IScope, element: ng.IAugmentedJQuery, 
             attrs: ng.IAttributes, controller: FancyButtonController) => {
-        element.find("#main-title").text(controller.text);
+        element.find('#main-title').text(controller.text);
     }
 }
 
-angular.module("fbSomeFeature").directive("fbFancyButton", () => new FancyButtonDirective());
+angular.module('fbSomeFeature').directive('fbFancyButton', () => new FancyButtonDirective());
 
 ```
 
