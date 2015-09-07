@@ -50,20 +50,13 @@ style annotations everywhere.
 
 ## Angular tips
 
-- Since you are using controllerAs throughout, a handy way to get a reference to 
-  parent controller (somewhere up the DOM tree) is
-  ```typescript
-  this.containerController : FancyButtonContainerController = this.$scope.$parent.buttonContainer
-  ```
-  (where buttonContainer is the 'controllerAs' name of the FancyButtonContainerController).
-  This works even when you have isolated scope.
 - ng-controller is out. Don't use it.
 - ng-init is a good way to shorten your template code, and can be used in any node. Don't shy away from it.
 - Use {{::oneTimeBindings}} everywhere you can.
   
 ## TypeScript tips
 
-- Use 'const' instead of 'let' and 'var' freely (you only need let/var if binding changes mid-function).
+- Prefer 'const' over 'let' and 'let' over 'var'. 
   const *does not mean* 'constant literal' despite the name. 
   
 - Use 'any' type freely. You can always add typing on later iterations. The more you add types, the more mileage
@@ -72,3 +65,6 @@ style annotations everywhere.
 - Don't go overboard with ES6-experimental features like @decorators.
 
 - Don't use the old TS module syntax (pre-1.5, 'module { }'), real ES6 style modules are the preferrend syntax.
+
+- Minimize ///<reference imports. Only reference one .d.ts file (that further references all the relevant .d.ts files like angular.d.ts and lodash.d.ts). Do not use .d.ts files for your own TypeScript code, restrict it to third party libraries. 
+
