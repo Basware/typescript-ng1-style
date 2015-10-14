@@ -45,11 +45,11 @@ export class MyController {
 
 angular.module('fbSomeFeature').controller('MyController', MyController);
 
-```	
+```
 
 Notable items:
  - MyService 'import'-ed just for type information
- 
+
 ## Services
 
 ```typescript
@@ -70,11 +70,15 @@ angular.module('fbSomeFeature').service('MyService', MyService);
 
 Notable items:
  - Use service() instead of factory
- - class exported to allow importing the type (as in MyController). 
+ - class exported to allow importing the type (as in MyController).
 
 ## Directives
 
 ```typescript
+
+class FancyButtonController {
+    // ... see MyController above
+}
 
 export class FancyButtonDirective implements ng.IDirective {
     restrict = 'EA';
@@ -82,8 +86,8 @@ export class FancyButtonDirective implements ng.IDirective {
     controller = FancyButtonController;
     controllerAs =  'fancyButton';
     scope = { text:  '@' };
-    bindToController = true;   
-    link = (scope: ng.IScope, element: ng.IAugmentedJQuery, 
+    bindToController = true;
+    link = (scope: ng.IScope, element: ng.IAugmentedJQuery,
             attrs: ng.IAttributes, controller: FancyButtonController) => {
         element.find('#main-title').text(controller.text);
     }
@@ -96,8 +100,9 @@ angular.module('fbSomeFeature').directive('fbFancyButton', () => new FancyButton
 Notable items:
 
  - controllerAs and bindToController
- - If need to use DI in link() function, see [further topics](https://github.com/vivainio/typescript-ng1-style/blob/master/further_topics.md). 
- - Relevant file names: FancyButton.ts, FancyButton.html (separate FancyButtonController.ts if you want)
+ - If need to use DI in link() function, see [further topics](https://github.com/vivainio/typescript-ng1-style/blob/master/further_topics.md).
+ - Relevant file names: FancyButtonDirective.ts, FancyButton.html
+ - DDO is in the same file as controller (as controller is tightly coupled to it)
  - link is a lambda function, not a method. With ES6 method syntax, 'this' ends up pointing to global window object.
 
 ## Angular Modules
@@ -125,6 +130,6 @@ import './SomeFeature/SomeFeatureModule';
 
 Notable items:
 
-- Angular modules have limited utility compared to standard ES6 
+- Angular modules have limited utility compared to standard ES6
   modules (most useful for reusable third party libraries).
   Don't overdesign them in your app.
