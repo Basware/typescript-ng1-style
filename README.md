@@ -15,7 +15,7 @@ Non-goals:
  - Code review guidance
 
 Tooling workflow we are using:
- - TypeScript 1.5+
+ - TypeScript 1.6+
  - Browserify, tsify and watchify (because tsc doesn't support bundling yet)
  - Visual Studio Code
  - All third party libs (including angular) dumb-concatenated to lib.js (not exposed to browserify),
@@ -80,30 +80,33 @@ class FancyButtonController {
     // ... see MyController above
 }
 
-export class FancyButtonDirective implements ng.IDirective {
-    restrict = 'EA';
-    templateUrl = 'Features/SomeFeature/FancyButton.html';
-    controller = FancyButtonController;
-    controllerAs =  'fancyButton';
-    scope = { text:  '@' };
-    bindToController = true;
-    link = (scope: ng.IScope, element: ng.IAugmentedJQuery,
-            attrs: ng.IAttributes, controller: FancyButtonController) => {
-        element.find('#main-title').text(controller.text);
-    }
+angular.module('fbSomeFeature').
+	directive('fbFancyButton', function FancyButtonDirective(): ng.IDirective) {
+	return {
+	    restrict: 'EA',
+	    templateUrl: 'Features/SomeFeature/FancyButton.html',
+	    controller: FancyButtonController,
+	    controllerAs: 'fancyButton',
+	    scope: { text:  '@' },
+	    bindToController: true,
+	    link: (scope: ng.IScope, element: ng.IAugmentedJQuery,
+	            attrs: ng.IAttributes, controller: FancyButtonController) => {
+	        element.find('#main-title').text(controller.text);
+	    }
+	}
 }
 
-angular.module('fbSomeFeature').directive('fbFancyButton', () => new FancyButtonDirective());
 
 ```
 
 Notable items:
 
  - controllerAs and bindToController
- - If need to use DI in link() function, see [further topics](https://github.com/vivainio/typescript-ng1-style/blob/master/further_topics.md).
  - Relevant file names: FancyButtonDirective.ts, FancyButton.html
  - DDO is in the same file as controller (as controller is tightly coupled to it)
- - link is a lambda function, not a method. With ES6 method syntax, 'this' ends up pointing to global window object.
+ - There is no separate class for directive. TypeScript 1.6 has strict object literal checking,
+   so with this "old style" function based syntax you get proper compiler warnings for unknown
+   DDO attributes.
 
 ## Angular Modules
 
