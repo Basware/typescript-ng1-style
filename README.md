@@ -80,8 +80,8 @@ class FancyButtonController {
     // ... see MyController above
 }
 
-angular.module('fbSomeFeature').
-	directive('fbFancyButton', function FancyButtonDirective(): ng.IDirective) {
+angular.module('fbSomeFeature')
+	.directive('fbFancyButton', function FancyButtonDirective(): ng.IDirective) {
 	return {
 	    restrict: 'EA',
 	    templateUrl: 'Features/SomeFeature/FancyButton.html',
@@ -107,6 +107,7 @@ Notable items:
  - There is no separate class for directive. TypeScript 1.6 has strict object literal checking,
    so with this "old style" function based syntax you get proper compiler warnings for unknown
    DDO attributes.
+ - The 'anonymous' function has a name to make it stand out in debugger.
 
 ## Angular Modules
 
