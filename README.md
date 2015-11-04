@@ -94,7 +94,7 @@ angular.module('fbSomeFeature')
 	        element.find('#main-title').text(controller.text);
 	    }
 	}
-}
+});
 
 
 ```
