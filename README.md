@@ -81,7 +81,7 @@ class FancyButtonController {
 }
 
 angular.module('fbSomeFeature')
-	.directive('fbFancyButton', function FancyButtonDirective(): ng.IDirective) {
+	.directive('fbFancyButton', function FancyButtonDirective(): ng.IDirective {
 	return {
 	    restrict: 'EA',
 	    templateUrl: 'Features/SomeFeature/FancyButton.html',
