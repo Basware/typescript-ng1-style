@@ -17,30 +17,6 @@ Which one is better is a matter of taste.
 Some developers only have one angular module (e.g. 'fbApp') instead of finer grained module distribution  
 and are perfectly happy with that. Consider that approach as well.
 
-## DI in directives
-
-If you need to inject some features in directive, as opposed to just the controller
-associated with the directive (e.g. to use in link() function), you need to add a constructor()
-with the features used in argument list and adjust the instantiation like so:
-
-```typescript
-export class FancyButtonDirective implements ng.IDirective {
-    restrict = "EA";
-    templateUrl = "Features/SomeFeature/FancyButton.html";
-    controller = FancyButtonController;
-    controllerAs =  "fancyButton";
-    scope = { text:  "@" };
-    constructor(private $animate) { }
-    link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, controller: FancyButtonController) =>
-    {
-        this.$animate.addClass("fancybutton", "fbtn");
-    }
-}
-angular.module("fbSomeFeature").directive("fbFancyButton", ["$animate", ($animate) =>  new FancyButtonDirective($animate)]);
-```
-
-This is a bit messy, and should be rarely needed; therefore, it's not shown in main page.
-
 ## Automatic DI
 
 There are tools like [ng-annotate](https://github.com/olov/ng-annotate) that automatically insert $inject annotations to
