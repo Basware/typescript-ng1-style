@@ -7,7 +7,6 @@ it where relevant.
 
 Goals:
  - Quick reference on how to implement Angular 1.x elements in TypeScript
- - As little text as possible. If you feel like reading more, see [further topics](https://github.com/vivainio/typescript-ng1-style/blob/master/further_topics.md) as well.
 
 Non-goals:
  - Teaching TypeScript or AngularJS
@@ -15,13 +14,12 @@ Non-goals:
  - Code review guidance
 
 Tooling workflow we are using:
- - TypeScript 1.6+
- - Browserify, tsify and watchify (because tsc doesn't support bundling yet)
+ - TypeScript 1.8+
  - Visual Studio Code
  - All third party libs (including angular) dumb-concatenated to lib.js (not exposed to browserify),
    application built with browserify to main.js. "angular" is globally visible.
  - Strict DI used
- - Gulp (but it doesn't matter, as heavy lifting done by browserify)
+ - Gulp
  - TSD package manager is used to install and bundle TypeScript definition files for improved intellisense.
 
 ## Controllers
@@ -34,8 +32,10 @@ export class MyController {
 	untypedAttribute;
 	stringAttribute: string;
 
-	static $inject = ['$http', 'MyService'];
-	contructor(private $http: ng.IHttpService, private MyService: MyService) {
+	static $inject = ['$http', 
+					  'MyService'];
+	contructor(private $http: ng.IHttpService,
+			   private MyService: MyService) {
 	}
 
 	someMethod() {
@@ -109,31 +109,25 @@ Notable items:
    DDO attributes.
  - The 'anonymous' function has a name to make it stand out in debugger.
 
-## Angular Modules
-
+## Modules
+Use a single Angular module for your app. Compose by importing.
 ```typescript
 
-// this is feature specific "root" module, SomeFeatureModule.ts
+// Angular module for the application
+angular.module('app', ['thirdPartyDep1', 'thirdPartyDep2']);
+```
 
-// create angular module here
-angular.module('fbSomeFeature', ['dep1', 'dep2']);
+Add things related to feature called "MyFeature" to MyFeatureModule.ts
+```typescript
 
-// add things to the created angular module here
-import './MyService'
-import './FancyButton'
+import './MyFeatureService'
+import './MyFeatureController'
 
 ```
 
 And in root app.ts:
-
 ```typescript
 
-import './SomeFeature/SomeFeatureModule';
+import './MyFeature/MyFeatureModule';
 
 ```
-
-Notable items:
-
-- Angular modules have limited utility compared to standard ES6
-  modules (most useful for reusable third party libraries).
-  Don't overdesign them in your app.
